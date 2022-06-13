@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	
+		<script>
+			
+			//我在W3school看到的東西(好像可用來表達div中的xy座標)
+			function myFunction(e) {
+			  var x = e.clientX;
+			  var y = e.clientY;
+			  var coor = "Coordinates: (" + x + "," + y + ")";
+			  document.getElementById("demo").innerHTML = coor;
+            }
+
+		</script>
+		
+		
+		<title>
+			yinxuan
+		</title>
+		
+		
+	</head>	
+	
+	<body>
+		
+		
+            <div class="puz"  onmousemove="myFunction(e)" style="width: 1500px;height: 600px ;border: 1px solid black">
+			
+			
+			</div>
+			
+			
+			<p id="demo"></p>
+		
+		
+		
+	</body>
+	
+</html>
+
+

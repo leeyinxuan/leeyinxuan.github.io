@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	
+		<script>
+			
+			//我在W3school看到的東西(好像可用來表達div中的xy座標)
+			function myFunction(e) {
+				var x = e.clientX;
+				var y = e.clientY;
+				var coor = "Coordinates: (" + x + "," + y + ")";
+				document.querySelector("#demo").innerHTML = coor;
+			}
+			
+			
+			//這是我想做的事情(希望能讓使用者任意移動圖塊)(先想辦法移動id="H"的那個)
+			function initial(e) {
+			
+				let vicky = document.querySelector("#H");
+				let Xinitial = 0;
+				let Yinitial = 0;
+				Xinitial = e.pageX ;
+				Yinitial = e.pageY ;
+				
+			}
+
+			function move(e) {
+    
+				Xnew = e.pageX - Xinitial;
+				Ynew = e.pageY - Yinitial;
+				
+			}
+			
+			function stop(){
+				vicky.style.left = Xnew + 'px';
+				vicky.style.top = Ynew + 'px';
+			}
+			
+			
+			//旋轉
+			function ro(x){
+				a = parseInt(document.querySelector("#ang").innerText);
+				a = a + 90;
+				if(x==1){
+					document.querySelector("#ang").innerText = a;
+					document.querySelector("#H").style.transform = "rotate("+a+"deg)";
+				}
+				else if(x==2){
+					document.querySelector("#ang").innerText = a;
+					document.querySelector("#U").style.transform = "rotate("+a+"deg)";
+				}
+				else if(x==3){
+					document.querySelector("#ang").innerText = a;
+					document.querySelector("#I").style.transform = "rotate("+a+"deg)";
+				}
+				else {
+					document.querySelector("#ang").innerText = a;
+					document.querySelector("#Z").style.transform = "rotate("+a+"deg)";
+				}
+			}	
+			function mov(){
+				pos+=10;
+				document.querySelector("#in").style.top = pos+"px";
+				document.querySelector("#in").style.left = pos+"px";
+			}				
+			
+			
+		</script>
+		
+		
+		<title>
+			yinxuan
+		</title>
+		
+		
+	</head>	
+	
+	<body>
+		
+		
+            <div class="puz"  onmousemove="myFunction(e)" style="width: 1200px;height: 3000px ;border: 1px solid black">
+			<img src="https://i.imgur.com/A2dtRvz.png" title="source: imgur.com" id="BG">
+			<img src="https://i.imgur.com/CUolk8b.png" title="source: imgur.com" style="position:absolute"id="H"  onmousedown="initial(e)" onmousemove="move(e)" onmouseup="stop(e)"onclick="ro(1)">
+			<img src="https://i.imgur.com/X1zU6xF.png" title="source: imgur.com" style="position:absolute" id="U" onclick="ro(2)">
+			<img src="https://i.imgur.com/goY6a85.png" title="source: imgur.com" style="position:absolute" id="I" onclick="ro(3)">
+			<img src="https://i.imgur.com/kK1UP8S.png" title="source: imgur.com" style="position:absolute" id="Z" onclick="ro(4)">
+			
+			</div>
+			
+			<div id="out" style="height:400px;width:400px;background-color:yellow;position:relative">
+				<div id="in" style="height:40px;width:40px;background-color:pink;" onclick="mov()" ></div>
+			</div>
+			
+			<img src="https://i.imgur.com/52m46de.png" title="source: imgur.com" id="IUZH">
+			<img src="https://i.imgur.com/LPzfaNJ.png" title="source: imgur.com" id="IZUH">
+			<img src="https://i.imgur.com/ao0lIlx.png" title="source: imgur.com" id="IUHZ">
+			<img src="https://i.imgur.com/vahhs47.png" title="source: imgur.com" id="HIUZ">
+			<img src="https://i.imgur.com/hhP2IZl.png" title="source: imgur.com" id="HUIZ">
+			
+			<p id="demo"></p>
+			<p id="ang" style="display:none">0</p>
+			
+			
+		
+		
+	</body>
+	
+</html>
+
+
