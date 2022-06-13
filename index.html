@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	
+		<script>
+			
+			
+		
+			//這是我想做的事情(希望能讓使用者任意移動圖塊)(先想辦法移動id="H"的那個)
+			function initial(e) {
+			
+				let vicky = document.querySelector("#H");
+				let Xinitial = 0;
+				let Yinitial = 0;
+				Xinitial = e.pageX ;
+				Yinitial = e.pageY ;
+				
+			}
+
+			function move(e) {
+    
+				Xnew = e.pageX - Xinitial;
+				Ynew = e.pageY - Yinitial;
+				
+			}
+			
+			function stop(){
+				vicky.style.left = Xnew + 'px';
+				vicky.style.top = Ynew + 'px';
+			}
+			
+			
+			//旋轉
+			function ro(x){
+				a = parseInt(document.querySelector("#ang").innerText);
+				a = a + 90;
+				if(x==1){
+					document.querySelector("#ang").innerText = a;
+					document.querySelector("#H").style.transform = "rotate("+a+"deg)";
+				}
+				else if(x==2){
+					document.querySelector("#ang").innerText = a;
+					document.querySelector("#U").style.transform = "rotate("+a+"deg)";
+				}
+				else if(x==3){
+					document.querySelector("#ang").innerText = a;
+					document.querySelector("#I").style.transform = "rotate("+a+"deg)";
+				}
+				else {
+					document.querySelector("#ang").innerText = a;
+					document.querySelector("#Z").style.transform = "rotate("+a+"deg)";
+				}
+			}	
+			
+			function gocha(y){
+				if(y==1){
+					document.querySelector("#IUZH").style.display = "block";
+					document.querySelector("#IZUH").style.display = "none";
+					document.querySelector("#IUHZ").style.display = "none";
+					document.querySelector("#HIUZ").style.display = "none";
+					document.querySelector("#HUIZ").style.display = "none";
+				}
+				else if(y==2){
+					document.querySelector("#IUZH").style.display = "none";
+					document.querySelector("#IZUH").style.display = "block";
+					document.querySelector("#IUHZ").style.display = "none";
+					document.querySelector("#HIUZ").style.display = "none";
+					document.querySelector("#HUIZ").style.display = "none";
+				}
+				else if(y==3){
+					document.querySelector("#IUZH").style.display = "none";
+					document.querySelector("#IZUH").style.display = "none";
+					document.querySelector("#IUHZ").style.display = "block";
+					document.querySelector("#HIUZ").style.display = "none";
+					document.querySelector("#HUIZ").style.display = "none";
+				}
+				else if(y==4){
+					document.querySelector("#IUZH").style.display = "none";
+					document.querySelector("#IZUH").style.display = "none";
+					document.querySelector("#IUHZ").style.display = "none";
+					document.querySelector("#HIUZ").style.display = "block";
+					document.querySelector("#HUIZ").style.display = "none";
+				}
+				else{
+					document.querySelector("#IUZH").style.display = "none";
+					document.querySelector("#IZUH").style.display = "none";
+					document.querySelector("#IUHZ").style.display = "none";
+					document.querySelector("#HIUZ").style.display = "none";
+					document.querySelector("#HUIZ").style.display = "block";
+				}
+			}
+			
+			
+		</script>
+		
+		<style>
+			/*.puz {
+				  border: 5px outset red;
+				  background-color: lightblue;    
+				  text-align: center;
+				}*/
+		</style>
+		
+		
+		<title>
+			yinxuan
+		</title>
+		
+		
+	</head>	
+	
+	<body>
+			<h1 style="font-size:100px;">旋轉拼圖</h1>
+			<p id="intro" style="font-size:50px;" >各位好：<br>看到車車們就賞心悅目對吧？這是一個我小時後覺得很好玩的遊戲，所以我把它拿來當成網頁設計的主題。遊戲玩法很簡單，保證你一次就上手！<br>1.點選按鈕"我要挑戰"讓畫面跳出挑戰關卡。<br>
+			2.根據關卡內容想辦法用四個圖塊把不需要的車車蓋住，只能讓特定種類及數量的車車出現。<br>3.點按圖塊就能讓其旋轉到你想要的角度，拉動圖塊則能讓它移動到你想要的位置。<br>4.確認完答案後根據圖塊的長相輸入答案。</p>
+			
+			<button style="font-size:80px;width:500px;height:100px;" onclick="gocha(2)">我要挑戰*</button>
+			<button style="font-size:80px;width:500px;height:100px;" onclick="gocha(4)">我要挑戰**</button>
+			<button style="font-size:80px;width:500px;height:100px;" onclick="gocha(3)">我要挑戰***</button>
+			<button style="font-size:80px;width:500px;height:100px;" onclick="gocha(1)">我要挑戰****</button>
+			<button style="font-size:80px;width:500px;height:100px;" onclick="gocha(5)">我要挑戰*****</button>
+			<button style="font-size:20px;">想放棄了</button>
+			<input id="cin" style="width:500px;height:100px;font-size:80px"></input>
+			<button style="font-size:80px;">送出答案</button>
+			
+			
+			
+			<img src="https://i.imgur.com/52m46de.png" title="source: imgur.com" id="IUZH" style="display:none ">
+			<img src="https://i.imgur.com/LPzfaNJ.png" title="source: imgur.com" id="IZUH" style="display:none ">
+			<img src="https://i.imgur.com/ao0lIlx.png" title="source: imgur.com" id="IUHZ" style="display:none ">
+			<img src="https://i.imgur.com/vahhs47.png" title="source: imgur.com" id="HIUZ" style="display:none ">
+			<img src="https://i.imgur.com/hhP2IZl.png" title="source: imgur.com" id="HUIZ" style="display:none ;height:315px">
+			
+            <div class="puz"  >
+			
+			<img src="https://i.imgur.com/CUolk8b.png" title="source: imgur.com" id="H"  onmousedown="initial(e)" onmousemove="move(e)" onmouseup="stop(e)"onclick="ro(1)">
+			<img src="https://i.imgur.com/X1zU6xF.png" title="source: imgur.com" id="U" onclick="ro(2)">
+			<img src="https://i.imgur.com/A2dtRvz.png" title="source: imgur.com" id="BG" >
+			<img src="https://i.imgur.com/goY6a85.png" title="source: imgur.com" id="I" onclick="ro(3)">
+			<img src="https://i.imgur.com/kK1UP8S.png" title="source: imgur.com" id="Z" onclick="ro(4)">
+			
+			</div>
+			
+			
+			
+			
+			<p id="ang" style="display:none">0</p>
+			
+			
+		
+		
+	</body>
+	
+</html>
+
+
